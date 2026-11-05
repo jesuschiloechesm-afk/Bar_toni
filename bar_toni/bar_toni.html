@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bar Toni | Restaurante Japonés y Tapas</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        terracota: {
+                            light: '#b77d54',
+                            DEFAULT: '#8b5a2b',
+                            dark: '#5c3a21',
+                        },
+                        stone: {
+                            950: '#1c1917',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { 
+            font-family: 'Inter', sans-serif; 
+            background-color: #291e16; /* Fondo marrón oscuro */
+            color: #e5d3c8; /* Texto claro terroso */
+        }
+        
+        /* Efecto Neón Azul para BAR TONI */
+        .neon-blue {
+            color: #fff;
+            text-shadow: 
+                0 0 5px #fff, 
+                0 0 10px #fff, 
+                0 0 20px #0051ff, 
+                0 0 40px #0051ff, 
+                0 0 80px #0051ff, 
+                0 0 90px #0051ff;
+            font-weight: 900;
+            letter-spacing: 4px;
+        }
+
+        /* Estilo para los detalles (acordeones de la carta) */
+        details {
+            background-color: #3b2a1f;
+            border: 1px solid #5c3a21;
+            border-radius: 0.5rem;
+            margin-bottom: 1rem;
+            overflow: hidden;
+        }
+        details summary {
+            background-color: #4a3424;
+            padding: 1rem 1.5rem;
+            font-size: 1.125rem;
+            font-weight: 600;
+            cursor: pointer;
+            list-style: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: #f3e8e0;
+        }
+        details summary::-webkit-details-marker {
+            display: none;
+        }
+        details summary::after {
+            content: '▼';
+            font-size: 0.8rem;
+            color: #b77d54;
+            transition: transform 0.3s ease;
+        }
+        details[open] summary::after {
+            transform: rotate(180deg);
+        }
+        details .content {
+            padding: 1.5rem;
+            background-color: #3b2a1f;
+        }
+        
+        /* Contenedor simulado para imágenes */
+        .img-placeholder {
+            background-color: #4a3424;
+            border: 2px dashed #8b5a2b;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #b77d54;
+            font-size: 0.9rem;
+            text-align: center;
+        }
+        
+        .star { color: #fbbf24; }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Navegación -->
+    <header class="bg-stone-950 text-white sticky top-0 z-50 shadow-md border-b border-terracota-dark">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#" class="text-xl font-bold tracking-widest neon-blue" style="text-shadow: 0 0 5px #fff, 0 0 10px #0051ff, 0 0 20px #0051ff;">BAR TONI</a>
+            <nav class="hidden md:flex space-x-8">
+                <a href="#inicio" class="text-terracota-light hover:text-white transition-colors font-medium">Inicio</a>
+                <a href="#destacados" class="text-terracota-light hover:text-white transition-colors font-medium">Destacados</a>
+                <a href="#carta" class="text-terracota-light hover:text-white transition-colors font-medium">La Carta</a>
+                <a href="#resenas" class="text-terracota-light hover:text-white transition-colors font-medium">Reseñas</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="inicio" class="relative pt-20 pb-12 px-4 flex flex-col items-center justify-center text-center">
+        <!-- Título principal en Neón Azul -->
+        <h1 class="text-6xl md:text-8xl neon-blue mb-4 uppercase">Bar Toni</h1>
+        <p class="text-xl md:text-2xl text-terracota-light mb-12 font-light tracking-wide">
+            Fusión de Tapas y Especialidades Asiáticas
+        </p>
+        
+        <!-- Tarjeta de Información y Horario (Columna Única) -->
+        <div class="w-full max-w-md bg-[#3b2a1f] border border-terracota rounded-xl p-8 shadow-2xl relative z-10 text-left">
+            <h3 class="text-2xl font-bold text-white mb-6 border-b border-terracota-dark pb-2 text-center">Información</h3>
+            
+            <div class="mb-6">
+                <p class="flex items-center gap-3 mb-2">
+                    <span class="text-terracota">📍</span> 
+                    <span class="text-sm">C/ dels Germans Villalonga, 1, Benimaclet</span>
+                </p>
+                <p class="flex items-center gap-3">
+                    <span class="text-terracota">📞</span> 
+                    <a href="tel:963276829" class="text-lg font-bold text-white hover:text-terracota-light transition-colors">963 27 68 29</a>
+                </p>
+            </div>
+            
+            <div>
+                <h4 class="font-bold text-terracota-light mb-3 flex items-center gap-2">
+                    <span>🕒</span> Horario
+                </h4>
+                <ul class="text-sm space-y-2 text-gray-300">
+                    <li class="flex justify-between border-b border-[#5c3a21] pb-1">
+                        <span>Lunes</span> <span class="text-red-400">Cerrado</span>
+                    </li>
+                    <li class="flex justify-between border-b border-[#5c3a21] pb-1">
+                        <span>Martes</span> <span>12:00–16:00 / 19:30–24:00</span>
+                    </li>
+                    <li class="flex justify-between border-b border-[#5c3a21] pb-1">
+                        <span>Miércoles</span> <span>12:00–16:00 / 19:30–24:00</span>
+                    </li>
+                    <li class="flex justify-between border-b border-[#5c3a21] pb-1">
+                        <span>Jueves</span> <span>12:00–16:00 / 19:30–24:00</span>
+                    </li>
+                    <li class="flex justify-between border-b border-[#5c3a21] pb-1">
+                        <span>Viernes</span> <span>12:00–16:00 / 19:30–24:00</span>
+                    </li>
+                    <li class="flex justify-between border-b border-[#5c3a21] pb-1">
+                        <span>Sábado</span> <span>12:00–16:00 / 19:30–24:00</span>
+                    </li>
+                    <li class="flex justify-between pt-1">
+                        <span>Domingo</span> <span>12:00–16:00 / 19:30–24:00</span>
+                    </li>
+                </ul>
+            </div>
+            
+            <div class="mt-6 flex justify-center gap-4 text-xs font-semibold">
+                <span class="bg-green-900/50 text-green-300 px-3 py-1 rounded-full border border-green-700/50">✅ Comer allí</span>
+                <span class="bg-green-900/50 text-green-300 px-3 py-1 rounded-full border border-green-700/50">✅ Para llevar</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Platos Destacados (Con placeholders de imagen) -->
+    <section id="destacados" class="py-16 px-6">
+        <div class="container mx-auto max-w-5xl">
+            <h2 class="text-3xl md:text-4xl font-bold text-white text-center mb-12">Platos Destacados</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Destacado 1 -->
+                <div class="bg-[#3b2a1f] rounded-xl overflow-hidden shadow-lg border border-terracota-dark">
+                    <div class="img-placeholder h-48 w-full">
+                        (Sustituir por: foto_nido_pajaro.jpg)
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-terracota-light mb-2">Ensalada Nido de Pájaro</h3>
+                        <p class="text-sm text-gray-400 mb-4">Alga wakame, hilo de patata crujiente, zanahoria y crema de aguacate con salmón.</p>
+                        <span class="text-lg font-bold text-white">14,90 €</span>
+                    </div>
+                </div>
+                
+                <!-- Destacado 2 -->
+                <div class="bg-[#3b2a1f] rounded-xl overflow-hidden shadow-lg border border-terracota-dark">
+                    <div class="img-placeholder h-48 w-full">
+                        (Sustituir por: foto_pato_casa.jpg)
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-terracota-light mb-2">Pato De La Casa</h3>
+                        <p class="text-sm text-gray-400 mb-4">Pato laqueado frito sobre una base de salteado de brotes de ajo y zanahoria, con soja.</p>
+                        <span class="text-lg font-bold text-white">10,80 €</span>
+                    </div>
+                </div>
+
+                <!-- Destacado 3 -->
+                <div class="bg-[#3b2a1f] rounded-xl overflow-hidden shadow-lg border border-terracota-dark">
+                    <div class="img-placeholder h-48 w-full">
+                        (Sustituir por: foto_torreznos.jpg)
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-terracota-light mb-2">Torreznos De Soria</h3>
+                        <p class="text-sm text-gray-400 mb-4">Panceta de cerdo crujiente de Soria, una de nuestras tapas tradicionales estrella.</p>
+                        <span class="text-lg font-bold text-white">8,90 €</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- La Carta Completa (Acordeones) -->
+    <section id="carta" class="py-16 px-6 bg-[#211710]">
+        <div class="container mx-auto max-w-4xl">
+            <h2 class="text-3xl md:text-4xl font-bold text-white text-center mb-12">Nuestra Carta</h2>
+            
+            <!-- Ensaladas -->
+            <details>
+                <summary>Ensaladas y Entrantes</summary>
+                <div class="content space-y-4">
+                    <div class="flex flex-col sm:flex-row justify-between border-b border-[#5c3a21] pb-3">
+                        <div>
+                            <h4 class="font-bold text-white text-lg">Ensalada Thailandesa</h4>
+                            <p class="text-sm text-gray-400">Surtido de lechuga, tomate cherry, zanahoria, arroz, almendras y pollo empanado</p>
+                        </div>
+                        <span class="font-bold text-terracota-light mt-2 sm:mt-0 whitespace-nowrap">12,50 €</span>
+                    </div>
+                    <div class="flex flex-col sm:flex-row justify-between border-b border-[#5c3a21] pb-3">
+                        <div>
+                            <h4 class="font-bold text-white text-lg flex items-center gap-2">Ensalada Nido De Pájaro <span class="text-xs bg-terracota text-white px-2 py-0.5 rounded">Estrella</span></h4>
+                            <p class="text-sm text-gray-400">Alga wakame, hilo de patata crujiente, zanahoria y crema de aguacate con salmón</p>
+                        </div>
+                        <span class="font-bold text-terracota-light mt-2 sm:mt-0 whitespace-nowrap">14,90 €</span>
+                    </div>
+                    <div class="flex flex-col sm:flex-row justify-between border-b border-[#5c3a21] pb-3">
+                        <div>
+                            <h4 class="font-bold text-white text-lg">Ensalada De La Casa</h4>
+                            <p class="text-sm text-gray-400">Surtido de lechuga, jamón york, zanahoria, brotes de soja y salsa de aguacate</p>
+                        </div>
+                        <span class="font-bold text-terracota-light mt-2 sm:mt-0 whitespace-nowrap">10,50 €</span>
+                    </div>
+                    <div class="flex flex-col sm:flex-row justify-between pb-1">
+                        <div>
+                            <h4 class="font-bold text-white text-lg">Ensalada Japonesa</h4>
+                            <p class="text-sm text-gray-400">Surtido de lechuga, zanahoria, salmón, surimi, sésamo y algas</p>
+                        </div>
+                        <span class="font-bold text-terracota-light mt-2 sm:mt-0 whitespace-nowrap">12,50 €</span>
+                    </div>
+                </div>
+            </details>
+
+            <!-- Tapas Españolas -->
+            <details>
+                <summary>Tapas Clásicas</summary>
+                <div class="content space-y-4">
+                    <div class="flex justify-between border-b border-[#5c3a21] pb-3">
+                        <div>
+                            <h4 class="font-bold text-white text-lg">Torreznos De Soria</h4>
+                            <p class="text-sm text-gray-400">Panceta de cerdo crujiente de Soria</p>
+                        </div>
+                        <span class="font-bold text-terracota-light">8,90 €</span>
+                    </div>
+                    <div class="flex justify-between border-b border-[#5c3a21] pb-3">
+                        <div>
+                            <h4 class="font-bold text-white text-lg">Patatas Bravas</h4>
+                            <p class="text-sm text-gray-400">Patatas fritas con salsa brava picante</p>
+                        </div>
+                        <span class="font-bold text-terracota-light">6,80 €</span>
+                    </div>
+                    <div class="flex justify-between border-b border-[#5c3a21] pb-3">
+                        <div>
+                            <h4 class="font-bold text-white text-lg">Ensaladilla Rusa</h4>
+                            <p class="text-sm text-gray-400">Patata, zanahoria, huevo y mayonesa</p>
+                        </div>
+                        <span class="font-bold text-terracota-light">7,90 €</span>
+                    </div>
+                    <div class="flex justify-between border-b border-[#5c3a21] pb-3">
+                        <div>
+                            <h4 class="font-bold text-white text-lg">Espárragos A La Plancha</h4>
+                        </div>
+                        <span class="font-bold text-terracota-light">11,80 €</span>
+                    </div>
+                    <div class="flex justify-between border-b border-[#5c3a21] pb-3">
+                        <div>
+                            <h4 class="font-bold text-white text-lg">Champiñones A La Plancha</h4>
+                        </div>
+                        <span class="font-bold text-terracota-light">7,50 €</span>
+                    </div>
+                    <div class="flex justify-between pb-1">
+                        <div>
+                            <h4 class="font-bold text-white text-lg">Revuelto De Setas Con Jamón</h4>
+                            <p class="text-sm text-gray-400">Huevos revueltos con setas y jamón</p>
+                        </div>
+                        <span class="font-bold text-terracota-light">10,50 €</span>
+                    </div>
+                </div>
+            </details>
+
+            <!-- Pescados y Mariscos -->
+            <details>
+                <summary>Del Mar</summary>
+                <div class="content space-y-4">
+                    <div class="flex justify-between border-b border-[#5c3a21] pb-3">
+                        <div>
+                            <h4 class="font-bold text-white text-lg">Sepia Con Gambas Y Gulas Al Ajillo</h4>
+                            <p class="text-sm text-gray-400">Sepia, gambas y gulas con ajo y aceite</p>
+                        </div>
+                        <span class="font-bold text-terracota-light">14,90 €</span>
+                    </div>
+                    <div class="flex justify-between border-b border-[#5c3a21] pb-3">
+                        <div>
+                            <h4 class="font-bold text-white text-lg">Sepionet A La Plancha</h4>
+                            <p class="text-sm text-gray-400">Sepia pequeña cocinada a la plancha</p>
+                        </div>
+                        <span class="font-bold text-terracota-light">19,60 €</span>
+                    </div>
+                    <div class="flex justify-between border-b border-[#5c3a21] pb-3">
+                        <div>
+                            <h4 class="font-bold text-white text-lg">Gambas Al Ajillo</h4>
+                            <p class="text-sm text-gray-400">Gambas salteadas con ajo y aceite de oliva</p>
+                        </div>
+                        <span class="font-bold text-terracota-light">11,50 €</span>
+                    </div>
+                    <div class="flex justify-between border-b border-[#5c3a21] pb-3">
+                        <div>
+                            <h4 class="font-bold text-white text-lg">Chipirones Fritos</h4>
+                            <p class="text-sm text-gray-400">Con limón</p>
+                        </div>
+                        <span class="font-bold text-terracota-light">8,90 €</span>
+                    </div>
+                    <div class="flex justify-between pb-1">
+                        <div>
+                            <h4 class="font-bold text-white text-lg">Tataki De Atún</h4>
+                            <p class="text-sm text-gray-400">Atún crudo ligeramente sellado por fuera</p>
+                        </div>
+                        <span class="font-bold text-terracota-light">11,80 €</span>
+                    </div>
+                </div>
+            </details>
+
+            <!-- Especialidades Asiáticas & Carnes -->
+            <details>
+                <summary>Especialidades y Carnes</summary>
+                <div class="content space-y-4">
+                    <div class="flex justify-between border-b border-[#5c3a21] pb-3">
+                        <div>
+                            <h4 class="font-bold text-white text-lg">Pato De La Casa</h4>
+                            <p class="text-sm text-gray-400">Pato laqueado frito sobre una base de salteado de brotes de ajo y zanahoria, con salsa de soja</p>
+                        </div>
+                        <span class="font-bold text-terracota-light">10,80 €</span>
+                    </div>
+                    <div class="flex justify-between border-b border-[#5c3a21] pb-3">
+                        <div>
+                            <h4 class="font-bold text-white text-lg">Cerdo Agridulce</h4>
+                            <p class="text-sm text-gray-400">Cerdo con salsa dulce y ácida</p>
+                        </div>
+                        <span class="font-bold text-terracota-light">11,80 €</span>
+                    </div>
+                    <div class="flex justify-between border-b border-[#5c3a21] pb-3">
+                        <div>
+                            <h4 class="font-bold text-white text-lg">Pollo Frito Estilo Japonés</h4>
+                            <p class="text-sm text-gray-400">Pollo rebozado y frito estilo japonés</p>
+                        </div>
+                        <span class="font-bold text-terracota-light">7,90 €</span>
+                    </div>
+                    <div class="flex justify-between border-b border-[#5c3a21] pb-3">
+                        <div>
+                            <h4 class="font-bold text-white text-lg">Pollo Al Limón</h4>
+                            <p class="text-sm text-gray-400">Pollo rebozado crujiente y salsa de limón</p>
+                        </div>
+                        <span class="font-bold text-terracota-light">11,50 €</span>
+                    </div>
+                    <div class="flex justify-between border-b border-[#5c3a21] pb-3">
+                        <div>
+                            <h4 class="font-bold text-white text-lg">Ternera Con Espárragos</h4>
+                            <p class="text-sm text-gray-400">Salteado de ternera tierna y espárragos con guarnición de patatas o arroz a elegir</p>
+                        </div>
+                        <span class="font-bold text-terracota-light">16,50 €</span>
+                    </div>
+                    <div class="flex justify-between border-b border-[#5c3a21] pb-3">
+                        <div>
+                            <h4 class="font-bold text-white text-lg">Entrecot</h4>
+                            <p class="text-sm text-gray-400">Corte de carne de ternera a la plancha</p>
+                        </div>
+                        <span class="font-bold text-terracota-light">25,50 €</span>
+                    </div>
+                    <div class="flex justify-between pb-1">
+                        <div>
+                            <h4 class="font-bold text-white text-lg">Wan Tun Frito</h4>
+                            <p class="text-sm text-gray-400">Pasta Wan Tun rellena de carne y gambas</p>
+                        </div>
+                        <span class="font-bold text-terracota-light">7,80 €</span>
+                    </div>
+                </div>
+            </details>
+
+            <!-- Arroces y Tallarines -->
+            <details>
+                <summary>Arroces y Fideos</summary>
+                <div class="content space-y-4">
+                    <div class="flex justify-between border-b border-[#5c3a21] pb-3">
+                        <div>
+                            <h4 class="font-bold text-white text-lg">Tallarines Estilo Thai</h4>
+                            <p class="text-sm text-gray-400">Pasta con ternera y verduras salteadas al estilo tailandés</p>
+                        </div>
+                        <span class="font-bold text-terracota-light">10,80 €</span>
+                    </div>
+                    <div class="flex justify-between border-b border-[#5c3a21] pb-3">
+                        <div>
+                            <h4 class="font-bold text-white text-lg">Tallarines A La Japonesa</h4>
+                            <p class="text-sm text-gray-400">Tallarines japoneses, carne, hojas de eneldo y sésamo</p>
+                        </div>
+                        <span class="font-bold text-terracota-light">9,50 €</span>
+                    </div>
+                    <div class="flex justify-between border-b border-[#5c3a21] pb-3">
+                        <div>
+                            <h4 class="font-bold text-white text-lg">Arroz Cantonés</h4>
+                            <p class="text-sm text-gray-400">Arroz frito, gambas, setas, maíz, zanahoria y jamón york</p>
+                        </div>
+                        <span class="font-bold text-terracota-light">9,50 €</span>
+                    </div>
+                    <div class="flex justify-between pb-1">
+                        <div>
+                            <h4 class="font-bold text-white text-lg">Arroz Con Pollo Oriental</h4>
+                            <p class="text-sm text-gray-400">Arroz blanco, pollo, pimiento rojo y sésamo</p>
+                        </div>
+                        <span class="font-bold text-terracota-light">13,50 €</span>
+                    </div>
+                </div>
+            </details>
+        </div>
+    </section>
+
+    <!-- Reseñas (Movidas a la parte inferior) -->
+    <section id="resenas" class="py-16 px-6 bg-[#1a120d]">
+        <div class="container mx-auto max-w-5xl">
+            <!-- Encabezado de Reseñas -->
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Lo que dicen nuestros clientes</h2>
+                <div class="flex justify-center items-center gap-3 text-2xl font-bold bg-[#3b2a1f] inline-block px-6 py-3 rounded-full border border-terracota-dark">
+                    <span class="text-3xl star">★★★★★</span>
+                    <span class="text-white">4,3 <span class="text-sm text-terracota-light font-normal">/ 5 en Google (935 reseñas)</span></span>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- Reseña 1 -->
+                <div class="bg-[#3b2a1f] p-6 rounded-xl border border-[#5c3a21]">
+                    <div class="flex text-xl mb-3 star">★★★★★</div>
+                    <p class="text-gray-300 italic mb-4 min-h-[100px]">"Comimos de menú a medio día entre semana, las opciones eran variadas. El pollo al limón era muy crujiente y con buen sabor. El sushi variado estaba bien, así como los maki. Me gustó mucho el yakisoba vegano y el arroz cantones. Definitivamente volveré."</p>
+                    <p class="font-bold text-terracota-light">- Joaquin Martinez Guillen</p>
+                </div>
+                
+                <!-- Reseña 2 -->
+                <div class="bg-[#3b2a1f] p-6 rounded-xl border border-[#5c3a21]">
+                    <div class="flex text-xl mb-3 star">★★★★★</div>
+                    <p class="text-gray-300 italic mb-4 min-h-[100px]">"Buen servicio, comida buena y elaborada, son super rápidos y limpios. Hay bastante variedad."</p>
+                    <p class="font-bold text-terracota-light">- Sara Giménez <span class="text-xs font-normal text-white bg-[#5c3a21] px-2 py-1 rounded ml-2">Local Guide</span></p>
+                </div>
+
+                <!-- Reseña 3 -->
+                <div class="bg-[#3b2a1f] p-6 rounded-xl border border-[#5c3a21]">
+                    <div class="flex text-xl mb-3 star">★★★★★</div>
+                    <p class="text-gray-300 italic mb-4 min-h-[100px]">"Comida muy rica, me sorprendió la verdad. Muy amables los camareros."</p>
+                    <p class="font-bold text-terracota-light">- Ed Señor X <span class="text-xs font-normal text-white bg-[#5c3a21] px-2 py-1 rounded ml-2">Local Guide</span></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Limpio -->
+    <footer class="bg-stone-950 text-white text-center py-8 px-6 border-t border-terracota-dark">
+        <div class="container mx-auto">
+            <h2 class="text-xl font-bold neon-blue mb-4">BAR TONI</h2>
+            <div class="text-sm text-gray-500 flex flex-col md:flex-row justify-center items-center gap-2">
+                <p>&copy; 2024 Bar Toni. Todos los derechos reservados.</p>
+                <span class="hidden md:inline">|</span>
+                <p>Benimaclet, València</p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
